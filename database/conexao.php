@@ -2,15 +2,24 @@
 
 require_once __DIR__ . '/../config/config.php';
 
-try{
-    $conexao = new PDO('mysql:host=localhost; dbname='.DB_NAME, DB_USER, DB_PASSWORD);
+try {
+
+    $dsn = "pgsql:host=" . DB_HOST .
+       ";port=" . DB_PORT .
+       ";dbname=" . DB_NAME;
+
+    $conexao = new PDO($dsn, DB_USER, DB_PASSWORD);
+
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conexao->exec('set names utf8');
-    
-}
-catch(PDOException $erro){
-  header('Content-Type: application/json; charset=utf-8');
-    echo json_encode(["sucesso" => false, "mensagem" => "Erro de conexão: " . $erro->getMessage()]);
+
+} catch (PDOException $erro) {
+
+    echo json_encode([
+        "success" => false,
+        "message" => "Erro de conexão com o banco",
+        "error" => $erro->getMessage()
+    ]);
+
     exit;
 }
 ?>
