@@ -12,7 +12,12 @@ $select->bindParam(1, $email);
 $select->execute();
 $coordenacao = $select->fetch(PDO::FETCH_ASSOC);
 
+if($coordenacao){
+$token = criarToken($coordenacao['id_coordenacao']);
+
+
 echo json_encode(["sucesso" => true, "mensagem" => $coordenacao ? "Email já cadastrado" : "Disponível", "dados" => $coordenacao ?: null]);
+}
 }catch(Exception $ex){
     echo json_encode(["sucesso" =>false, "mensagem" =>"Erro da api " , $ex->getMessage(), "dados" =>null]);  
 }?>
