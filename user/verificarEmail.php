@@ -14,5 +14,5 @@ $coordenacao = $select->fetch(PDO::FETCH_ASSOC);
 
 echo json_encode(["sucesso" => true, "mensagem" => $coordenacao ? "Email já cadastrado" : "Disponível", "dados" => $coordenacao ?: null]);
 }catch(Exception $ex){
-    echo json_encode(["sucesso" =>false, "mensagem" =>"Erro da api " , $ex->getMessage(), "dados" =>null]);  
+    echo json_encode(["sucesso" =>false, "mensagem" =>"Erro da api " . $ex->getMessage(), "dados" =>null]);  
 }?>

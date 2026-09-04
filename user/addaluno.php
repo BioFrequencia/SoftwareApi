@@ -4,15 +4,11 @@ require_once __DIR__ . '/../database/conexao.php';
 
 $dados = json_decode(file_get_contents("php://input"), true);
 
-/*$aluno  = $dados["aluno"];
+$aluno  = $dados["aluno"];
 $id_sala = $dados["id_sala"];
 $dta_nasc_aluno = $dados["dta_nasc_aluno"];
-$genero_aluno = $dados["genero_aluno"];*/
+$genero_aluno = $dados["genero_aluno"];
 
-$aluno  = "Klebersonzinho";
-$id_sala = "5";
-$dta_nasc_aluno = "2009/01/12";
-$genero_aluno = "Masculino";
 
 try {
 
